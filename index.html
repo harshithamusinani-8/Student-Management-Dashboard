@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StudentHub - Student Management</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h2>StudentHub</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-grid-2"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#students" class="nav-item">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="#courses" class="nav-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Courses</span>
+            </a>
+
+            <a href="#" class="nav-item" id="reportsNav">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Reports</span>
+            </a>
+
+            <p class="nav-title second-title">MANAGEMENT</p>
+
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Help Center</span>
+            </a>
+
+        </nav>
+
+
+        <div class="upgrade-card">
+
+            <div class="upgrade-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+
+            <h3>Upgrade Plan</h3>
+
+            <p>
+                Unlock advanced analytics and unlimited student records.
+            </p>
+
+            <button type="button">
+                Upgrade Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+
+        <div class="admin-profile">
+
+            <div class="profile-avatar">
+                AD
+            </div>
+
+            <div class="profile-info">
+                <strong>Admin User</strong>
+                <span>Administrator</span>
+            </div>
+
+            <i class="fa-solid fa-ellipsis"></i>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <strong>StudentHub</strong>
+            </div>
+
+            <div class="topbar-left">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="globalSearch"
+                        placeholder="Search students..."
+                        autocomplete="off"
+                    >
+
+                    <span class="shortcut">⌘ K</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="icon-button"
+                    type="button"
+                    title="Notifications"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-divider"></div>
+
+                <div class="top-user">
+
+                    <div class="top-avatar">
+                        AD
+                    </div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="page-header">
+
+            <div>
+                <p class="breadcrumb">
+                    Dashboard
+                    <i class="fa-solid fa-chevron-right"></i>
+                    Students
+                </p>
+
+                <h1>Student Management</h1>
+
+                <p class="page-subtitle">
+                    Manage your students, courses and academic records.
+                </p>
+            </div>
+
+
+            <button
+                class="primary-button"
+                type="button"
+                id="addStudentBtn"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Add New Student
+            </button>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-content">
+                    <span>Total Students</span>
+                    <h2 id="totalStudents">0</h2>
+                    <p class="stat-positive">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span id="studentGrowth">Active records</span>
+                    </p>
+                </div>
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-content">
+                    <span>Active Students</span>
+                    <h2 id="activeStudents">0</h2>
+                    <p class="stat-positive">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Currently active
+                    </p>
+                </div>
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-content">
+                    <span>Inactive Students</span>
+                    <h2 id="inactiveStudents">0</h2>
+                    <p class="stat-neutral">
+                        <i class="fa-solid fa-user-clock"></i>
+                        Need attention
+                    </p>
+                </div>
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-user-minus"></i>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-content">
+                    <span>Total Courses</span>
+                    <h2 id="totalCourses">0</h2>
+                    <p class="stat-positive">
+                        <i class="fa-solid fa-book"></i>
+                        Available programs
+                    </p>
+                </div>
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section class="analytics-grid">
+
+            <!-- Overview -->
+
+            <div class="panel overview-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Student Overview</h3>
+                        <p>Current student enrollment summary</p>
+                    </div>
+
+                    <select id="overviewPeriod">
+                        <option value="all">All Students</option>
+                    </select>
+
+                </div>
+
+
+                <div class="overview-body">
+
+                    <div class="donut-wrapper">
+
+                        <div class="donut-chart">
+                            <div class="donut-center">
+                                <strong id="chartTotal">0</strong>
+                                <span>Students</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview-legend">
+
+                        <div class="legend-item">
+                            <div class="legend-left">
+                                <span class="legend-dot active-dot"></span>
+                                <span>Active</span>
+                            </div>
+
+                            <strong id="chartActive">0</strong>
+                        </div>
+
+
+                        <div class="legend-item">
+                            <div class="legend-left">
+                                <span class="legend-dot inactive-dot"></span>
+                                <span>Inactive</span>
+                            </div>
+
+                            <strong id="chartInactive">0</strong>
+                        </div>
+
+
+                        <div class="legend-item">
+                            <div class="legend-left">
+                                <span class="legend-dot course-dot"></span>
+                                <span>Courses</span>
+                            </div>
+
+                            <strong id="chartCourses">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Course Breakdown -->
+
+            <div
+                class="panel course-panel"
+                id="courses"
+            >
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>Course Breakdown</h3>
+                        <p>Students by program</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="small-icon-button"
+                        id="refreshCourses"
+                    >
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+
+                </div>
+
+                <div
+                    class="course-list"
+                    id="courseList"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="quick-actions">
+
+            <div class="quick-action-text">
+                <span>Quick Actions</span>
+                <p>Manage student records faster</p>
+            </div>
+
+            <button
+                type="button"
+                class="quick-button"
+                id="quickAddBtn"
+            >
+                <i class="fa-solid fa-user-plus"></i>
+                Add Student
+            </button>
+
+            <button
+                type="button"
+                class="quick-button"
+                id="quickReportBtn"
+            >
+                <i class="fa-solid fa-file-csv"></i>
+                Export Report
+            </button>
+
+            <button
+                type="button"
+                class="quick-button"
+                id="quickSearchBtn"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search Students
+            </button>
+
+        </section>
+
+
+        <!-- ================= STUDENT TABLE ================= -->
+
+        <section
+            class="panel students-panel"
+            id="students"
+        >
+
+            <div class="students-header">
+
+                <div>
+                    <h3>Recent Students</h3>
+                    <p>View and manage your student records.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="outline-button"
+                    id="viewAllBtn"
+                >
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="table-toolbar">
+
+                <div class="table-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="studentSearch"
+                        placeholder="Search by name, ID or email..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <select id="courseFilter">
+
+                        <option value="all">
+                            All Courses
+                        </option>
+
+                        <option value="BCA">
+                            BCA
+                        </option>
+
+                        <option value="B.Tech">
+                            B.Tech
+                        </option>
+
+                        <option value="MCA">
+                            MCA
+                        </option>
+
+                        <option value="MBA">
+                            MBA
+                        </option>
+
+                    </select>
+
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Table -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>STUDENT</th>
+                            <th>STUDENT ID</th>
+                            <th>COURSE</th>
+                            <th>EMAIL</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTableBody">
+                    </tbody>
+
+                </table>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-user-slash"></i>
+                    </div>
+
+                    <h3>No students found</h3>
+
+                    <p>
+                        Try changing your search or filter.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Table Footer -->
+
+            <div class="table-footer">
+
+                <span id="tableCount">
+                    Showing 0 students
+                </span>
+
+                <div class="pagination">
+
+                    <button
+                        type="button"
+                        id="prevPage"
+                        disabled
+                    >
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <span id="pageNumber">1</span>
+
+                    <button
+                        type="button"
+                        id="nextPage"
+                        disabled
+                    >
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        class="modal-overlay"
+        id="studentModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div class="modal-title-area">
+
+                    <div class="modal-icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="modalTitle">
+                            Add New Student
+                        </h2>
+
+                        <p>
+                            Enter the student details below.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closeModalBtn"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <!-- IMPORTANT: autocomplete disabled -->
+
+            <form
+                id="studentForm"
+                autocomplete="off"
+            >
+
+                <input
+                    type="hidden"
+                    id="editIndex"
+                    value=""
+                >
+
+
+                <div class="form-grid">
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="student_full_name"
+                                placeholder="Enter full name"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STUDENT ID -->
+
+                    <div class="form-group">
+
+                        <label for="studentId">
+                            Student ID
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                            <input
+                                type="text"
+                                id="studentId"
+                                name="student_identifier"
+                                placeholder="STU001"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE -->
+
+                    <div class="form-group">
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <i class="fa-solid fa-book"></i>
+
+                            <select
+                                id="course"
+                                name="student_course"
+                                required
+                            >
+
+                                <option value="">
+                                    Select course
+                                </option>
+
+                                <option value="BCA">
+                                    BCA
+                                </option>
+
+                                <option value="B.Tech">
+                                    B.Tech
+                                </option>
+
+                                <option value="MCA">
+                                    MCA
+                                </option>
+
+                                <option value="MBA">
+                                    MBA
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="student_email_address"
+                                placeholder="student@example.com"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group full-width">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <select
+                                id="status"
+                                name="student_status"
+                            >
+
+                                <option value="Active">
+                                    Active
+                                </option>
+
+                                <option value="Inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelBtn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <!-- VERY IMPORTANT: type="submit" -->
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                        <span id="saveButtonText">
+                            Save Student
+                        </span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <div class="toast-content">
+            <strong id="toastTitle">Success</strong>
+            <span id="toastMessage">
+                Student saved successfully!
+            </span>
+        </div>
+
+        <button
+            type="button"
+            id="closeToast"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+
+    <!-- JS -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
